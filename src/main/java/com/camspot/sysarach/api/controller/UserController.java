@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@CrossOrigin=(origins="*")
+@CrossOrigin(origins="*")
 @RestController
 public class UserController {
 

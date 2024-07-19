@@ -46,19 +46,20 @@ public class UserController {
         }
     }
 
-    @PostMapping("/Login")
-    public ResponseEntity<Response> Login(@RequestBody String username,@RequestParam String password) {
-        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+     @PostMapping("/login")
+    public ResponseEntity<Response> Login(@RequestBody LoginDTO loginDTO) {
+        if (loginDTO.getUsername() == null || loginDTO.getUsername().isEmpty() ||
+                loginDTO.getPassword() == null || loginDTO.getPassword().isEmpty()) {
             Response response = new Response("Either of the parameters is null or empty", null);
             return ResponseEntity.badRequest().body(response);
         }
 
-        Optional<User> user = uService.getUser(username, password);
+        Optional<User> user = uService.getUser(loginDTO.getUsername(), loginDTO.getPassword());
         if (user.isPresent()) {
             Response response = new Response("Login successful", user.get());
             return ResponseEntity.ok(response);
         } else {
-            Response response = new Response("Invalid email or password", null);
+            Response response = new Response("Invalid username or password", null);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }

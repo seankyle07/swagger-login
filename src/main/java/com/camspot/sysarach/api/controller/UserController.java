@@ -1,5 +1,6 @@
 package com.camspot.sysarach.api.controller;
 
+import com.camspot.sysarach.DTO.LoginDTO;
 import com.camspot.sysarach.DTO.UserDTO;
 import com.camspot.sysarach.api.model.User;
 import com.camspot.sysarach.Response;
